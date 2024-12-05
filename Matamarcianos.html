@@ -1,0 +1,172 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene obb-collider="showColliders: false">
+        
+        <a-plane position="0 1 -10" height="20" width="10" rotation="-90 0 0" color="#CCC" >
+        </a-plane>
+        <a-light type="ambient" position="0 0 0" color="#fff"></a-light>
+
+        <a-entity oculus-touch-controls="hand:left"></a-entity>
+        <a-entity oculus-touch-controls="hand:right" raycaster="showLine: true; far; 100; lineColor: red; lineOpacity: 0.5"></a-entity>
+        <!--- animation="property: position; to: 0 1.5 0; dur: 6000; easing: linear;"-->
+
+        <!-- 0
+        <a-box obb-collider position="-2 1.5 -20" color="green"></a-box>
+        <a-box obb-collider position="-3 1.5 -20" color="green"></a-box>
+        <a-box obb-collider position="-4 1.5 -20" color="green"></a-box>
+
+        <a-box obb-collider position="-2 2.5 -20" color="green"></a-box>
+        <a-box obb-collider class="caja" position="-3 2.5 -20" color="green"></a-box>
+        <a-box obb-collider position="-4 2.5 -20" color="green"></a-box> 
+
+        <a-box obb-collider position="-2 3.5 -20" color="green"></a-box>
+        <a-box obb-collider position="-3 3.5 -20" color="green"></a-box>
+        <a-box obb-collider position="-4 3.5 -20" color="green"></a-box> -->
+
+        <!-- 1-->
+        <a-box obb-collider class="caja" position="0 2.5 -20" color="green"></a-box>
+        <a-box obb-collider position="1 1.5 -20" color="green"></a-box>
+        <a-box obb-collider position="-1 1.5 -20" color="green"></a-box>
+
+
+        <a-box obb-collider id="caja"position="-1 1.5 -10" color="blue"></a-box>
+
+        <a-box obb-collider position="0 1.5 -20" color="green"></a-box>
+        <a-box obb-collider position="1 2.5 -20" color="green"></a-box>
+        <a-box obb-collider position="-1 2.5 -20" color="green"></a-box> 
+
+        <a-box obb-collider position="0 3.5 -20" color="green"></a-box>
+        <a-box obb-collider position="1 3.5 -20" color="green"></a-box>
+        <a-box obb-collider position="-1 3.5 -20" color="green"></a-box>
+
+        <!-- 2-->
+        <a-box obb-collider position="2 2.5 -20" color="green"></a-box>
+        <a-box obb-collider position="3 1.5 -20" color="green"></a-box>
+        <a-box obb-collider position="4 1.5 -20" color="green"></a-box>
+
+        <a-box obb-collider position="2 1.5 -20" color="green"></a-box>
+        <a-box obb-collider class="caja" position="3 2.5 -20" color="green"></a-box>
+        <a-box obb-collider position="4 2.5 -20" color="green"></a-box> 
+
+        <a-box obb-collider position="2 3.5 -20" color="green"></a-box>
+        <a-box obb-collider position="3 3.5 -20" color="green"></a-box>
+        <a-box obb-collider position="4 3.5 -20" color="green"></a-box>
+
+
+            
+        <a-camera id="camara" obb-collider>
+            <a-cursor></a-cursor>
+            <a-text id="vida" value="5" color="black" position="3.0 1.5 -2"></a-text>  
+            <a-text id="cartel" value="YOU LOSE" color="red" position="-0.5 0.5 -2" visible="false"></a-text>
+        </a-camera>
+    </a-scene>
+</body>
+<script>
+
+    
+
+
+
+
+
+    var i=1;
+    var vida=5;
+    var block=false;
+    var cajas=document.getElementsByClassName('caja');
+    var intervalo;
+    var caja1;
+    var indice1;
+    let f;
+
+
+
+
+    for (let index = 0; index < cajas.length; index++) {
+
+        var caja = cajas[index];
+        var indice = index;
+
+        window.setInterval(function () {
+            console.log(caja);
+            if(i==1 && block!=true)
+            {
+                cajas[index].setAttribute("color","green");
+                i=2;
+            }
+
+            else if(i==2 && block!=true)
+            {
+                cajas[index].setAttribute("color","red");
+                i=3;
+            }
+            else if(i==3 && block!=true)
+            {
+                cajas[index].setAttribute("color","black");
+                i=1;
+            }
+        }, 500);
+
+    }
+
+
+    function funcionCambiarColor()
+        {
+            console.log(caja);
+            if(i==1 && block!=true)
+            {
+                caja.setAttribute("color","green");
+                i=2;
+            }
+
+            else if(i==2 && block!=true)
+            {
+                caja.setAttribute("color","red");
+                i=3;
+            }
+            else if(i==3 && block!=true)
+            {
+                caja.setAttribute("color","black");
+                i=1;
+            }
+        };
+
+    /*document.getElementById("caja").addEventListener("click", function prueba()
+    {
+       var colorCaja= this.getAttribute("color");
+       if(colorCaja=="green")
+       {
+        document.getElementById("cartel").setAttribute("color","black");
+        document.getElementById("cartel").setAttribute("value","YOU WIN <3");
+        document.getElementById("cartel").setAttribute("visible",true);
+        block=true;
+       }
+       else if(colorCaja!="green")
+       {
+        document.getElementById("vida").setAttribute("value",document.getElementById("vida").getAttribute("value")-1);  
+        vida--;
+       } 
+        
+       if(vida==0)
+       {
+        document.getElementById("cartel").setAttribute("visible",true);
+            console.log("HAS PERDIDO");
+            block=true;
+       }
+    });*/
+    // document.getElementById("caja").addEventListener("mouseenter", function prueba(){
+    //     this.setAttribute("color","green");
+    // });
+    // document.getElementById("caja").addEventListener("mouseleave", function prueba(){
+    //     this.setAttribute("color","red");
+    // });
+    // document.getElementById("camara").addEventListener("obbcollisionstarted", function prueba(){
+    //     console.log( document.getElementById("vida").getAttribute("value"));
+    //     document.getElementById("vida").setAttribute("value",document.getElementById("vida").getAttribute("value")-1);
+    // });
+</script>
+</html>

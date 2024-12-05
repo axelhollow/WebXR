@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Most Basic Super-Hands Example</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
+  <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+  <!-- Fisicas -->
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
+  
+
+</head>
+
+<body>
+    <a-scene physics="">
+   
+    <a-entity>
+      <a-camera></a-camera>
+      <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: left"></a-entity>
+      <a-entity sphere-collider="objects: a-box" super-hands hand-controls="hand: right"></a-entity>
+    </a-entity>
+    <!-- hover & drag-drop won't have any obvious effect without some additional event handlers or components. See the examples page for more -->
+    <a-box dynamic-body hoverable grabbable stretchable draggable droppable color="blue" position="0 3 -4"></a-box>
+
+    <a-entity id="box-container"></a-entity>
+
+    <a-plane 
+    position="0 0 -4" 
+    rotation="-90 0 0" 
+    width="10" 
+    height="10" 
+    color="#7BC8A4" 
+    static-body>
+  </a-plane>
+  
+  <!-- Cielo -->
+  <a-sky color="#ECECEC"></a-sky>
+  </a-scene>
+</body>
+
+<!-- <script>
+    // Seleccionamos el contenedor donde se añadirán los cubos
+    const container = document.getElementById('box-container');
+
+    // Función para crear un nuevo cubo
+    function createBox() 
+    {
+        const box = document.createElement('a-box');
+        box.setAttribute('hoverable', '');
+        box.setAttribute('grabbable', '');
+        box.setAttribute('stretchable', '');
+        box.setAttribute('draggable', '');
+        box.setAttribute('droppable', '');
+        box.setAttribute('color', 'blue');
+        box.setAttribute('dynamic-body', ''); // Añadimos físicas dinámicas
+        box.setAttribute('position', `${Math.random() * 4 - 2} 3 ${Math.random() * -3 - 1}`); // Posición aleatoria
+        container.appendChild(box);
+      }
+
+    // Generar un nuevo cubo cada 5 segundos
+    setInterval(createBox, 5000);
+  </script> -->
+</html>
