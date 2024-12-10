@@ -1,16 +1,18 @@
 <html>
 
-<head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.7/aframe/build/aframe-ar.min.js"></script>
-</head>
-<body>
-    <a-scene embedded arjs>
+    <head>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.7/aframe/build/aframe-ar.min.js"></script>
+    </head>
 
-        <a-marker type="barcode" value="0">
-        <a-box color="red" position="0 0 0"></a-box>
-        </a-marker> 
-        <a-entity camera></a-entity>
-    </a-scene>
-</body>
+    <body>
+        <a-scene embedded arjs>
+
+            <a-marker type="barcode" value="0">
+                <a-box color="red" position="0 0 0"></a-box>
+            </a-marker> 
+            <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+
 </html>
