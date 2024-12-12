@@ -7,14 +7,24 @@
 
 <body>
     <a-scene embedded arjs>
-        <!-- Marcador AR -->
-        <a-marker type="barcode" value="0">
+        <!-- Definición de Activos -->
         <a-assets>
-            <a-asset-item id="london-obj" src="imgs/charmander.obj"></a-asset-item>
-            <a-asset-item id="london-mtl" src="imgs/charmander.mtl"></a-asset-item>
+            <a-asset-item id="charmander-obj" src="One_piece.obj"></a-asset-item>
+            <a-asset-item id="charmander-mtl" src="One_piece.mtl"></a-asset-item>
         </a-assets>
 
+        <!-- Marcador AR -->
+        <a-marker type="barcode" value="0">
+            <!-- Modelo 3D usando los activos definidos -->
+            <a-obj-model 
+                src="#charmander-obj" 
+                mtl="#charmander-mtl" 
+                position="0 0 0" 
+                scale="0.1 0.1 0.1" 
+                rotation="0 180 0">
+            </a-obj-model>
         </a-marker>
+
         <a-entity camera></a-entity>
     </a-scene>
 </body>
