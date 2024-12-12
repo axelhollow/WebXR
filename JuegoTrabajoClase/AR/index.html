@@ -9,14 +9,11 @@
     <a-scene embedded arjs>
         <!-- Marcador AR -->
         <a-marker type="barcode" value="0">
-            <!-- Modelo 3D en formato OBJ -->
-            <a-obj-model 
-                src="One_piece.obj" 
-                mtl="One_piece.mtl" 
-                position="0 0 0" 
-                scale="1 1 1" 
-                rotation="0 180 0">
-            </a-obj-model>
+        <a-assets>
+            <a-asset-item id="london-obj" src="imgs/charmander.obj"></a-asset-item>
+            <a-asset-item id="london-mtl" src="imgs/charmander.mtl"></a-asset-item>
+        </a-assets>
+
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
