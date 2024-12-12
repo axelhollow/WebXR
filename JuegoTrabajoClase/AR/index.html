@@ -9,14 +9,13 @@
     <a-scene embedded arjs>
         <!-- Marcador AR -->
         <a-marker type="barcode" value="0">
-            <!-- Modelo 3D en formato OBJ -->
-            <a-obj-model 
-                src="Mewtwo.obj" 
-                mtl="Mewtwo.mtl" 
+            <!-- Modelo 3D en formato STL -->
+            <a-entity 
                 position="0 0 0" 
                 scale="1 1 1" 
-                rotation="0 180 0">
-            </a-obj-model>
+                rotation="0 180 0"
+                stl-model="Mewtwo.stl">
+            </a-entity>
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
