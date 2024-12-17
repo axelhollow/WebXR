@@ -9,14 +9,27 @@
     <a-scene embedded="" arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" class="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
         
         <a-assets>
-
-            <a-asset-item id="diglett-obj" src="One_piece.obj"></a-asset-item>
-            <a-asset-item id="diglett-mtl" src="One_piece.mtl"></a-asset-item>
-
+            
+            <!-- MewTwo -->
+            <a-asset-item id="mewTwo-obj" src="mewTWO.obj"></a-asset-item>
+            <a-asset-item id="mewTwo-mtl" src="mewTWO.mtl"></a-asset-item>
+            <!-- Mew -->
+            <a-asset-item id="mew-obj" src="mewOBJ.obj"></a-asset-item>
+            <!-- <a-asset-item id="mew-mtl" src="mew.mtl"></a-asset-item> -->
         </a-assets>
+
+        <!-- 0 -->
         <a-marker type="barcode" value="0">
 
-            <a-entity id="diglett"  rotation="0 150 0" side="double" position="0.0 0 0" scale="0.05 0.05 0.05" obj-model="obj: #diglett-obj; mtl: #diglett-mtl">
+            <a-entity id="mewtwo"  rotation="0 150 0" side="double" position="0.0 0 0" scale="0.05 0.05 0.05" obj-model="obj: #mewTwo-obj; mtl: #mewTwo-mtl">
+
+            </a-entity>
+        </a-marker>
+
+        <!-- 1 -->
+        <a-marker type="barcode" value="1">
+
+            <a-entity id="mew"  rotation="0 150 0" side="double" position="0.0 0 0" scale="0.05 0.05 0.05" obj-model="obj: #mew-obj; ">
 
             </a-entity>
         </a-marker>
