@@ -6,22 +6,26 @@
 </head>
 
 <body>
+    <!-- Botón para reproducir las animaciones -->
+    <button id="playAnimations" style="position: absolute; top: 20px; left: 20px; z-index: 9999;">
+        Reproducir Animaciones
+    </button>
+
     <a-scene embedded arjs="debugUIEnabled:false; detectionMode:mono_and_matrix; matrixCodeType:3x3;" vr-mode-ui="enabled:false" gesture-detector>
         
         <a-assets>
             <!-- Cargar modelos GLTF (con animación) -->
             <a-asset-item id="bulba-gltf" src="bulba.glb"></a-asset-item>
-
         </a-assets>
 
+        <!-- Marcador para Diglett -->
         <a-marker type="barcode" value="0">
-            <!-- Añadir animation-mixer para activar las animaciones -->
             <a-entity id="bulba" 
                       rotation="0 150 0" 
                       position="0 0 0" 
-                      scale="0.1 0.1 0.1" 
-                      gltf-model="#bulba-gltf" 
-                      animation-mixer 
+                      scale="10 10 10" 
+                      gltf-model="#diglett-gltf" 
+                      animation-mixer="clip: *" 
                       gesture-handler>
             </a-entity>
         </a-marker>
@@ -29,17 +33,14 @@
     </a-scene>
 
     <script>
-        // Obtener las entidades de los modelos
-        let bulba = document.querySelector('#bulba');
+        // Obtener los modelos
+        const bulba = document.querySelector('#bulba');
 
-        // Controlar la animación de Diglett
-        bulba.addEventListener('click', function() {
-            let mixer = bulba.getAttribute('animation-mixer');
-            // Alternar entre detener y reproducir la animación
-            if (mixer.isRunning()) {
-                mixer.stop();  // Pausar la animación
-            } else {
-                mixer.play();  // Reproducir la animación
+        // Función para reproducir animaciones cuando se presiona el botón
+        document.getElementById('playAnimations').addEventListener('click', function() {
+            // Reproducir la animación del modelo Diglett
+            if (bulba && bulba.components['animation-mixer']) {
+                bulba.components['animation-mixer'].play();
             }
         });
     </script>
